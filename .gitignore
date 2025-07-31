@@ -1,0 +1,102 @@
+# ===============================
+# Python
+# ===============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ===============================
+# Virtual environments
+# ===============================
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+.venv.bak/
+
+# ===============================
+# Django
+# ===============================
+*.log
+*.pot
+*.pyc
+*.sqlite3
+*.db
+
+# Media/Static
+static/
+staticfiles/
+media/
+public/
+
+# Django migration files except __init__.py
+*/migrations/*.py
+*/migrations/*.pyc
+!*/migrations/__init__.py
+
+# ===============================
+# Environment variables
+# ===============================
+.env
+.env.*
+.envrc
+
+# ===============================
+# VS Code & IDEs
+# ===============================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ===============================
+# System Files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Testing / Coverage
+# ===============================
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.pytest_cache/
+
+# ===============================
+# Git related
+# ===============================
+*.orig
+
+# ===============================
+# Node / Frontend
+# ===============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ===============================
+# Build artifacts
+# ===============================
+build/
+dist/
+*.egg-info/
+.eggs/
+.eggs-info/
+*.manifest
+*.spec
+
+# ===============================
+# Docker
+# ===============================
+*.pid
+docker-compose.override.yml
