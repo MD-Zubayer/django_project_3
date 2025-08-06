@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <title>Document</title>
+
+</head>
+<body>
+    <h1>Welcome {{ name }}!</h1>
+    <p>Age: {{ age }}</p>
+
+    {% if age >= 18%}
+        <p> You are an adult </p>
+    {% else %}
+        <p> You are an child </p>
+    {% endif %}
+
+    <ul>
+       <p> {{title}} </p>
+    {% for project in projects %}
+    
+    <li>
+        {{project.name}} - {{project.tech}} 
+    </li>
+    
+
+    {% endfor %}
+    </ul>
+ <a href="{% url "product_list" %}">Go to Products page</a>
+
+
+ {% comment %} <img src="{% static "images/diagram.svg" %}" alt="Logo"> {% endcomment %}
+ <script src=" {% static "js/index.js" %} "></script>
+
+
+</body>
+</html>

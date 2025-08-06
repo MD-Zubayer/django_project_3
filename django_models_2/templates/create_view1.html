@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    {% comment %} <p>
+        {{objects.title}}
+    </p>
+       <p>
+        {{objects.author}}
+    </p>
+
+       <p>
+        {{objects.price}}
+    </p> {% endcomment %}
+
+<ul>
+    
+    <li> {{objects.title}}  </li>
+    <li> {{objects.author}}  </li>
+    <li> {{objects.price}}  </li>
+
+    {% comment %} {% for object in all_objects %}
+     <li> {{object.title}}  </li>
+     <li> {{object.author}}  </li>
+     <li> {{object.price}}  </li>
+     <li> {{object}}  </li> {% endcomment %}
+
+     
+
+
+
+{% comment %} 
+    {% endfor %} {% endcomment %}
+
+      <li> {{new_data.title}}  </li>
+    <li> {{new_data.author}}  </li>
+    <li> {{new_data.price}}  </li>
+
+</ul>
+
+<h1>
+</h1>
+
+</html>
