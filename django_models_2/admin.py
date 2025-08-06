@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django_models_2.models import Book1, Product, Author, Book2, AuthorProfile, Book3, Person, Person2, Product2, Product3, Employee, Order, Enrollment, Student, Course, Product4, Product5,Student2, Teacher, Person3, Student3, Teacher2, Teacher3, User2, AdminUser,Employee2, HighSalaryEmployee, User3, VIPUser3, Product6, Oeder2, Mymodel, Check, Event, Name,User4, User4Profile
+from django_models_2.models import Book1, Product, Author, Book2, AuthorProfile, Book3, Person, Person2, Product2, Product3, Employee, Order, Enrollment, Student, Course, Product4, Product5,Student2, Teacher, Person3, Student3, Teacher2, Teacher3, User2, AdminUser,Employee2, HighSalaryEmployee, User3, VIPUser3, Product6, Oeder2, Mymodel, Check, Event, Name,User4, User4Profile, User5, User5profile, Post, Post1, Event1
 
 
 @admin.register(Book1)
@@ -160,3 +160,24 @@ class User4Admin(admin.ModelAdmin):
 @admin.register(User4Profile)
 class User4ProfileAdmin(admin.ModelAdmin):
     list_display = ['id', 'bio', 'user4']
+
+@admin.register(User5)
+class User5Admin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+
+@admin.register(User5profile)
+class User5profileAdmin(admin.ModelAdmin):
+    list_display = ['id', 'bio', 'user5']
+
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'is_published']
+
+@admin.register(Post1)
+class Post1Admin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'is_active']
+
+@admin.register(Event1)
+class Event1Admin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'start_time']
+

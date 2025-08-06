@@ -3,6 +3,7 @@ from django.db.models import Q, F, Deferrable, UniqueConstraint
 from decimal import Decimal
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator, MinLengthValidator, MaxLengthValidator, EmailValidator, URLValidator, RegexValidator, validate_slug, validate_email, validate_ipv4_address, validate_ipv6_address
+from django.utils import timezone
 # Create your models here.
 
 
@@ -362,5 +363,60 @@ class User4Profile(models.Model):
     bio = models.TextField(blank=True, null=True)
     
 
+class User5(models.Model):
+    name = models.CharField(max_length=100)
 
+class User5profile(models.Model):
+    user5 = models.OneToOneField(User5, on_delete=models.SET_NULL, null=True)
+    bio = models.TextField(null=True)
+
+
+# Custom Manager
+
+class PublishedManager(models.Manager):
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset().filter(is_published=True)
+
+class Post(models.Model):
+    title = models.CharField(max_length=200)
+    is_published = models.BooleanField(default=False)
+
+    # attach custom manager
+    objects = models.Manager()
+    published = PublishedManager()
+
+class MyManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+
+class Post1(models.Model):
+    title = models.CharField(max_length=100)
+    is_active = models.BooleanField(default=True)
+
+    # objects = models.Manager()
+    is_active_manager = MyManager() # এখন সব query শুধুমাত্র active data return করবে
+
+# Custom Queryset
+
+class EventQuerySet(models.QuerySet):
+    def upcoming(self):
+        return self.filter(start_time__gte=timezone.now())
+    
+    def past(self):
+        return self.filter(start_time__lt=timezone.now())
+
+# Custom Manager
+class EventManager(models.Manager):
+    def get_queryset(self):
+        return EventQuerySet(self.model, using=self._db)
+
+    def upcoming_events(self):
+        return self.get_queryset().upcoming()
+
+# add in models
+class Event1(models.Model):
+    name = models.CharField(max_length=100)
+    start_time = models.DateTimeField()
+
+    objects = EventManager()
 
