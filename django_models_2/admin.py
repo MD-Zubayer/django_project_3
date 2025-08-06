@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django_models_2.models import Book1, Product, Author, Book2, AuthorProfile, Book3, Person, Person2, Product2, Product3, Employee, Order, Enrollment, Student, Course, Product4, Product5,Student2, Teacher, Person3, Student3, Teacher2, Teacher3, User2, AdminUser,Employee2, HighSalaryEmployee, User3, VIPUser3, Product6, Oeder2, Mymodel, Check, Event, Name,User4, User4Profile, User5, User5profile, Post, Post1, Event1
+from django_models_2.models import Book1, Product, Author, Book2, AuthorProfile, Book3, Person, Person2, Product2, Product3, Employee, Order, Enrollment, Student, Course, Product4, Product5,Student2, Teacher, Person3, Student3, Teacher2, Teacher3, User2, AdminUser,Employee2, HighSalaryEmployee, User3, VIPUser3, Product6, Oeder2, Mymodel, Check, Event, Name,User4, User4Profile, User5, User5profile, Post, Post1, Event1, Event2, Event3
 
 
 @admin.register(Book1)
@@ -181,3 +181,10 @@ class Post1Admin(admin.ModelAdmin):
 class Event1Admin(admin.ModelAdmin):
     list_display = ['id', 'name', 'start_time']
 
+@admin.register(Event2)
+class Event2Admin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'is_active']
+
+@admin.register(Event3)
+class Event3Admin(admin.ModelAdmin):
+    list_display = ['id', 'name']

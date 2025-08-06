@@ -4,6 +4,7 @@ from decimal import Decimal
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator, MinLengthValidator, MaxLengthValidator, EmailValidator, URLValidator, RegexValidator, validate_slug, validate_email, validate_ipv4_address, validate_ipv6_address
 from django.utils import timezone
+from django.db.models.functions import Length
 # Create your models here.
 
 
@@ -419,4 +420,39 @@ class Event1(models.Model):
     start_time = models.DateTimeField()
 
     objects = EventManager()
+
+# custom manager
+class ActiveEventManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+    
+class Event2(models.Model):
+    title = models.CharField(max_length=100)
+    is_active = models.BooleanField(default=True)
+
+    objects = models.Manager()
+    is_active_manager = ActiveEventManager()
+
+
+# custom Queryset
+class CustomEventQuerySet(models.QuerySet):
+    def length_10(self):
+        return self.annotate(name_length=Length('name')).filter(name_length=10)
+
+# custom event3 manager
+class Event3Manager(models.Manager):
+    def get_queryset(self):
+        return CustomEventQuerySet(self.model, using=self._db)
+
+    def length_10(self):
+        return self.get_queryset().length_10()
+
+class Event3(models.Model):
+    name = models.CharField(max_length=100)
+
+    objects = models.Manager()
+    event3_manager = Event3Manager()
+
+
+
 
