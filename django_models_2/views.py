@@ -157,7 +157,7 @@ def QuerySetView(req):
         count1 = Product.objects.count()
         exists = Product.objects.filter(id=4).exists()
         result1 = Product.objects.aggregate(total_price=Sum('price'), avarage=Avg('price'), max=Max('price'), main=Min('price'), id=Count('id'))
-
+        result2 = ""
 
 
 
