@@ -7,6 +7,7 @@ urlpatterns = [
     path('create_view/', views.create_view2, name='create_view2'),
     path('list_view/', views.list_view, name='list_view'),
     path('test/', views.AccessOnToOnField, name='AccessOnToOnField'),
-    path('test2/', views.AccessManyToManyField, name='AccessManyToManyField')
+    path('test2/', views.AccessManyToManyField, name='AccessManyToManyField'),
+    path('query_test/', views.QuerySetView, name='QuerySetView')
 
 ]
